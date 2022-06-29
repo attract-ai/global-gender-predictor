@@ -1,0 +1,1 @@
+from global_gender_predictor.global_gender_predictor import GlobalGenderPredictor
