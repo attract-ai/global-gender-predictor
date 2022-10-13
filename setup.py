@@ -2,7 +2,7 @@ from setuptools import setup
 
 setup(
     name='global_gender_predictor',
-    version='0.0.1',
+    version='0.0.3',
     description='Predict gender based on first name',
     author='Rianne Klaver',
     author_email='rianne.klaver@attract.ai',

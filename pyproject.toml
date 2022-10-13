@@ -1,6 +1,6 @@
 [project]
 name = "global_gender_predictor"
-version = "0.0.2"
+version = "0.0.3"
 authors = [
   { name="attract.ai", email="hello@attract.ai" },
 ]
