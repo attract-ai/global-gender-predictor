@@ -43,3 +43,10 @@ doi = {10.7910/DVN/MSEGSJ},
 url = {https://doi.org/10.7910/DVN/MSEGSJ}
 }
 ```
+
+## deployment 
+```
+rm dist/*
+python3 -m build
+twine upload dist/*
+```
