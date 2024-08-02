@@ -19,15 +19,18 @@ class GlobalGenderPredictor:
         self.gender_map = {"F": "Female", "M": "Male", "?": "Unknown"}
 
     def predict_gender(self, name, threshold=0.6):
+        gender, weight = self.predict_gender_probability(name)
+        if weight >= threshold:
+            return gender
+        return "Unknown"
+
+    def predict_gender_probability(self, name):
         lower_name = name.lower()
         if lower_name not in self._name_gender_dict:
             self._load_file(lower_name)
         byte = self._name_gender_dict.get(lower_name, 0)
         gender, weight = convert_byte_to_prob(byte)
-
-        if weight >= threshold:
-            return self.gender_map[gender]
-        return "Unknown"
+        return self.gender_map[gender], weight
 
     def _load_file(self, name):
         name_hash = hashlib.md5(name.encode("utf-8")).hexdigest()[0]

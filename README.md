@@ -1,4 +1,4 @@
-# Global Gender Predictor
+    # Global Gender Predictor
 Predict gender using first name using data from World Gender Name Dictionary 2.0. 
 The dataset contains 4,148,966 unique names. The predictor is case-insensitive and predicts ``Male``, ``Female``, or ``Unknown`` (i.e. unisex or not found in data)
 
