@@ -1,7 +1,7 @@
 import json
 import gzip
 import hashlib
-from pkg_resources import resource_filename
+import importlib.resources
 
 
 def convert_prob_to_byte(gender, prob):
@@ -38,9 +38,9 @@ class GlobalGenderPredictor:
             # already loaded, don't try again
             return
 
-        data_path = resource_filename("global_gender_predictor", f"data/gender_wgnd2.{name_hash}.jsonl.gz")
+        ref = importlib.resources.files("global_gender_predictor") / f"data/gender_wgnd2.{name_hash}.jsonl.gz"
 
-        with gzip.open(data_path, 'rb') as f:
+        with importlib.resources.as_file(ref) as data_path, gzip.open(data_path, 'rb') as f:
             for line in f:
                 name_dict = json.loads(line)
                 max_gender = max(name_dict['gender_prob'], key=name_dict['gender_prob'].get)
